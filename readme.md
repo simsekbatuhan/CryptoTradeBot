@@ -1,28 +1,27 @@
-# 📲 **Telegram News Trading Bot**
 
-**Telegram Bot** 📢 designed to help users take fast trading actions 🏃‍♂️ by delivering **real-time news** 📰 from a channel and letting them open trades directly on **Binance** with a simple click of a button 🎯. Subscriptions are handled through **crypto payments** 💸, verified automatically by the bot 🤖.
+ # 🚀 Telegram Crypto News Trading Bot
 
-## 🚀 **Features**
+This project is a **Telegram bot** designed to help users quickly react to real-time news from a designated news channel. The bot sends instant news updates to subscribed users and allows them to trade on their connected Binance account with the click of a button. Users can subscribe to the service by paying with cryptocurrency and the bot will automatically verify and confirm the payment.
 
-- 📡 **Real-time News Delivery**: Get the latest news instantly from a specific Telegram channel.
-- ⚡ **Quick Trade Actions**: Trade buttons allow users to instantly open positions on their connected Binance accounts.
-- 🔐 **Automated Subscription Management**: Pay with cryptocurrency to subscribe, and the bot verifies the payment automatically.
-- 🔗 **Secure Binance Account Linking**: Connect Binance accounts securely to trade with ease.
+## ✨ Features
 
-## 🛠️ **How It Works**
+- 🔔 **Real-Time News Alerts**: The bot receives news from a Telegram news channel and sends it directly to users with active subscriptions.
+- **Instant Trade**: Each news alert includes a button that allows users to quickly open trades on their connected Binance accounts.
+- 💸 **Crypto-Based Subscription**: Users can subscribe by making a cryptocurrency payment, which the bot automatically verifies and processes.
+- 🛠️ **API-Driven**: The bot offers api for all core functions, including user management, news, trading, and payment processing.
 
-1. **News Forwarding** 📰: The bot monitors a specified news channel and sends news directly to subscribers.
-2. **Actionable Trading** ⚡: Each news message comes with a button so users can immediately execute a trade.
-3. **Subscription Process**:
-   - Users subscribe using **cryptocurrency payments** 💸.
-   - The bot automatically verifies the payment and activates the subscription upon confirmation ✅.
+## 🛠️ How It Works
 
-## 💡 **Usage**
+1. 💳 **Subscription**: Users subscribe to the bot by paying a cryptocurrency payment. The bot verifies the payment and grants access.
+2. 📰 **News Distribution**: The bot monitors the designated news channel and sends real-time updates to all active subscribers.
+3. 💼 **Commerce**: Each news message comes with a button that allows users to trade directly through their connected Binance account.
+4. ✅ **Payment Processing**: The bot supports cryptocurrency payments and automatically processes and validates them.
 
-- 🕵️ The bot will monitor the news channel and alert subscribed users with news updates in real-time 🗞️.
-- 📈 Users can click the buttons beneath the news to instantly execute trades via their Binance accounts 💰.
-- 🔐 Subscription statuses are managed automatically based on crypto payment verification.
+## 📚 Usage
 
-## 📜 **License**
+- 📝 After subscribing, users will automatically receive news updates.
+- 💬 Users can click on the button provided to quickly take action based on the news.
+- ⚙️ Bot will automatically manage user subscriptions and payments.
 
-Licensed under the **MIT License** 📃.
+## 📄 License
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
