@@ -5,6 +5,7 @@ const path = require('path');
 
 const bybit = require('./marketServices/bybit')
 //bybit.fillSymbols()
+require('dotenv').config();
 
 const sequelize = require('./config/sequelize');
 const settings = require('./config/settings');

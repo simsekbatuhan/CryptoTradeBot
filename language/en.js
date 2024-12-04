@@ -17,6 +17,11 @@ const en = {
     reject: "Rejected.",
     pending: "Pending.",
 
+
+    working: "🟢 Working",
+    care: "🟡 In Care",
+    notWorking: "🔴 Not Working",
+
     button_sup: "🆘 Support",
     button_account: "👤 My Account",
     button_fqa: "ℹ FAQ",
@@ -39,6 +44,9 @@ const en = {
     button_symbols: "SYMBOLS",
     button_closeOrder: "Close Order",
     button_selectLang: "Language",
+    button_bot: "Bot",
+    button_feedBack: "Feedback",
+    button_changeLog: "Change Log",
 
     infoMarket_bybit_1: `
 1. Log in to your account at https://bybit.com
@@ -108,6 +116,10 @@ If you do not have an account, you can create an account at https://partner.bybi
 ❗(The API key and secret key cannot be viewed by anyone, they are stored encrypted.)
     `,
 
+    bot: `
+Version: {version}
+Status: {status}
+`,
 
     timeout: "Timeout.",
     missingAmount: "Missing amount.",
@@ -133,7 +145,6 @@ If you do not have an account, you can create an account at https://partner.bybi
     timeoutError: "Your operation was canceled due to inactivity.",
     selectMarket: "Which exchange would you like to trade on?",
     noSub: "This operation requires a subscription; you can get more information about your subscription from the My Account menu.",
-    subscribe: "Please select the package you would like to purchase.\n\n{discount}",
     discountMessage: "Special {rate} discount for your referral!",
     errorSub: "You already have an active subscription; you cannot buy another subscription until it expires.",
     noPayment: "No payment found.",
@@ -155,6 +166,16 @@ If you do not have an account, you can create an account at https://partner.bybi
     editButtonMessage: "the amount of position you want to assign",
     binanceSideError: `In Binance Futures -> Settings -> “Position Mode Settings” you need to select the two-way position mode (hedge).`,
     paymentErr: "\nWhen you make the payment, share the TXID information with @rawensupport\n",
+    feedbackMsg: "Please write the subject you would like to provide feedback/suggestion on.",
+    sendingFeedback: "Your feedback has been successfully sent thank you for your interest",
+
+    subscribe: `Please select the package you would like to purchase.
+    
+1 Month - 149$ 
+3 Months - 349$ ( %30 Discount)
+1 Year - 999$ (%45 Discount)
+
+{discount}`,
 
     market: `
 Exchange: {market}

@@ -15,8 +15,9 @@ const marketService = require('../services/marketService');
 const buttonsService = require('../services/buttonsService');
 const bybitService = require('../marketServices/bybit');
 const binanceService = require('../marketServices/binance')
+const botService = require('../services/botService')
 
-const bot = new TelegramBot(settings.telegramToken, { polling: true });
+const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, { polling: true });
 bot.commands = new Map();
 
 const loadCommands = () => {
@@ -67,7 +68,7 @@ async function sendNews(message, coins, users, lang) {
                                 .map(item => {
                                     const formattedSymbol = `${item}`;
 
-                                    const bybitsym = bybitSymbols.find(mm => mm.name.replace("1000", "").replace("1", "").replace("USDT", "") == formattedSymbol.replace("$", "").replace("USDT", "").toUpperCase());
+                                    const bybitsym = bybitSymbols.find(mm => mm.name.replace("USDT", "").replaceAll("1", "").replaceAll("0", "") == formattedSymbol.replace("$", "").replace("USDT", "").toUpperCase());
                                     return bybitsym ? bybitsym : null;
                                 })
                                 .filter(detail => detail !== null);
@@ -77,7 +78,7 @@ async function sendNews(message, coins, users, lang) {
                             list = coins
                                 .map(item => {
                                     const formattedSymbol = `${item}`;
-                                    const binanceSym = binanceSymbols.find(mm => mm.name.replace("1000", "").replace("1", "").replace("USDT", "") == formattedSymbol.replace("$", "").replace("USDT", "").toUpperCase());
+                                    const binanceSym = binanceSymbols.find(mm => mm.name.replace("USDT", "").replaceAll("1", "").replaceAll("0", "") == formattedSymbol.replace("$", "").replace("USDT", "").toUpperCase());
                                     return binanceSym ? binanceSym : null;
                                 })
                                 .filter(detail => detail !== null);
@@ -216,6 +217,21 @@ bot.onText(/\/onay (.+)/, async (msg, match) => {
     }
 });
 
+bot.onText(/\/bot (.+)/, async (msg, match) => {
+    const args = match[1].split(' ');
+    const chatId = msg.chat.id
+    console.log(chatId)
+    console.log(settings.ownerIds.includes(chatId))
+    if(!settings.ownerIds.includes(`${chatId}`))  return
+    if(args[0]) {
+        
+        const version = args[0] == "null" ? null : args[0]
+        const status = args[1] == "null" ? null : args[1]
+
+        const request = await botService.edit(version, status)
+        bot.sendMessage(chatId, request)        
+    }
+});
 
 bot.onText(/\/red (.+)/, async (msg, match) => {
     const args = match[1].split(' ');
@@ -280,6 +296,12 @@ bot.on('message', async (msg) => {
             try {
                 await deleteLastMessage(chatId)
             } catch { }
+        } else if (text.includes("🤖")) {
+
+            bot.commands.get('bot').execute(bot, msg);
+            try {
+                await deleteLastMessage(chatId)
+            } catch { }
         }
     } catch (error) {
 
@@ -302,7 +324,7 @@ bot.on('callback_query', async (callbackQuery) => {
                     reply_markup: {
                         keyboard: [
                             //, messagess.button_fqa
-                            [messagess.button_account, messages.button_fqa],
+                            [messages.button_account, messages.button_fqa],
                             [messagess.button_sup, messagess.button_channel]
                         ],
                         resize_keyboard: true
@@ -514,8 +536,17 @@ bot.on('callback_query', async (callbackQuery) => {
             },
             'selectLangg': () => {
                 executeCommand(bot, callbackQuery.message, 'start')
+            },
+            'feedback': () => {
+                executeCommand(bot, callbackQuery.message, 'feedback')
+            },
+            'changeLogs': () => {
+                executeCommand(bot, callbackQuery.message, 'changeLogs')
+            },
+            'bot': () => {
+                executeCommand(bot, callbackQuery.message, 'bot')
             }
-        }
+        }   
 
         const handler = data2.length > 2 ? commandHandlers[data2[0]] : commandHandlers[data[0]];
         if (handler) {

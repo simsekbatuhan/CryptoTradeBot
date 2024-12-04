@@ -48,7 +48,7 @@ module.exports = {
                     [{ text: messages.button_sub, callback_data: `subscribeInfo-${chatId}` }],
                     [{ text: messages.button_myPayments, callback_data: `myPayments-${chatId}` }],
                     [{ text: messages.button_reference, callback_data: `referance-${chatId}` }],
-                    [{ text: messages.button_selectLang, callback_data: `selectLangg-${chatId}` }],
+                    [{ text: messages.button_selectLang, callback_data: `selectLangg-${chatId}` }, { text: messages.button_bot, callback_data: `bot-${chatId}` }],
                 ]
             };
 

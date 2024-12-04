@@ -17,6 +17,10 @@ const tr = {
     reject: "Reddedildi.",
     pending: "Bekliyor.",
 
+    working: "🟢 Çalışıyor",
+    care: "🟡 Bakımda",
+    notWorking: "🔴 Çalışmıyor",
+
     button_sup: "🆘 Destek",
     button_account: "👤 Hesabım",
     button_fqa: "ℹ SSS",
@@ -39,6 +43,9 @@ const tr = {
     button_symbols: "SEMBOLLER",
     button_closeOrder: "İşlemi Kapat",
     button_selectLang: "Dil",
+    button_bot: "Bot",
+    button_feedBack: "Geri Bildirim",
+    button_changeLog: "Güncellemeler",
 
     infoMarket_bybit_1: `
 1. https://bybit.com adresinden hesabınıza giriş yapın
@@ -133,7 +140,9 @@ Hesabınız yok ise https://partner.bybit.com/b/84632 buradan hesap oluşturabil
     noSub: "Bu işlem için üyeliğinizin bulunması gerekiyor; Hesabım menüsünden üyelik hakkında bilgi alabilirsiniz.",
     subscribe: `Satın almak istediğiniz paketi seçiniz.
 
-Lansmana özel İNDİRİM! 
+1 ay - 149$ 
+3 ay - 349$ ( %30 indirim)
+1 yıl - 999$ (%45 indirim)
 
 {discount}
     `,
@@ -158,6 +167,13 @@ Lansmana özel İNDİRİM!
     editButtonMessage: "Atamak istediğiniz pozisyon miktarı",
     binanceSideError: `Binance Vadeli İşlemler -> Ayarlar -> “Pozisyon Modu Ayarları ”nda iki yönlü pozisyon modunu (hedge) seçmeniz gerekir.`,
     paymentErr: "\nÖdeme yaptığınız zaman txid bilgisini @rawensupport ile paylaşın\n",
+    feedbackMsg: "Geri bildirim/Öneri yapmak istediğiniz konuyu yazınız.",
+    sendingFeedback: "Geri bildiriminiz başarıyla gönderilmiştir ilginiz için teşekkür ederiz",
+
+    bot: `
+Sürüm: {version}
+Durum: {status}
+`,
 
     market: `
 Borsa: {market}

@@ -1,7 +1,7 @@
-require('dotenv').config();
+
 const axios = require('axios');
 const log = require('./log')
-const OPENAI_API_KEY = "";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY 
 
 async function translateSummarize(text) {
     try {

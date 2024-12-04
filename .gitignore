@@ -9,6 +9,8 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+session.txt
+session
 
 # Log dosyaları
 logs

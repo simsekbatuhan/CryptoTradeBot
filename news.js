@@ -29,7 +29,7 @@ var client;
 (async () => {
     let stringSession = new StringSession(fs.existsSync(sessionFile) ? fs.readFileSync(sessionFile, 'utf8') : '');
 
-    client = new TelegramClient(stringSession, settings.apiId, settings.apiHash, { connectionRetries: 5 });
+    client = new TelegramClient(stringSession, parseInt(process.env.API_ID), process.env.API_HASH, { connectionRetries: 5 });
 
     if (!fs.existsSync(sessionFile)) {
         await client.start({
@@ -44,6 +44,7 @@ var client;
     } else {
         await client.connect();
         console.log("Kaydedilen oturum ile giriş yapıldı.");
+        
     }
 
     client.addEventHandler(eventPrint, new NewMessage({}));
@@ -85,7 +86,8 @@ async function eventPrint(event) {
 
                 const data = {
                     message: message.message,
-                    id: message.id
+                    id: message.id,
+                    channelId: channelId
                 }
 
                 await croxydb.set("function_last_run_time", now)
@@ -130,7 +132,7 @@ async function processMessage(message) {
 
         console.log("Coinler:", matches)
 
-        if (words.length > 2) {
+        if (words.length > 2 || message.channelId == "2117032512") {
             msg = await ai.translateSummarize(msg);
         }
 
@@ -177,14 +179,17 @@ async function processPublicNews(text) {
  
     await new Promise(resolve => setTimeout(resolve, 15000));
 
-    const channel = await client.getEntity(); 
+    const raweNews = await client.getEntity(-1002171235980); 
+    const poor = await client.getEntity(-1002461158385)
 
     const impact = await ai.newsCommenting(text)
     const en = await translateText(text, "EN")
 
-    const message = `${text}\n\nYapay Zeka Yorumu: ${impact}\n\nEN: ${en}`
+    const message = `${text}\n\nYapay Zeka Yorumu: ${impact}\n\nEN: ${en}\n\n@RawenNewsPro_bot`
+    const poorMessage = `${text}\n\nYapay Zeka Yorumu: ${impact}\n\n@Rawenews`
 
-    await client.sendMessage(channel.id, { message: message }) 
+    await client.sendMessage(raweNews.id, { message: message }) // RaweNews 
+    await client.sendMessage(poor.id, {message: poorMessage}) // Havuz
     
 }
 
@@ -193,7 +198,7 @@ async function translateText(text, targetLanguage) {
 
     const url = "https://api-free.deepl.com/v2/translate";
     const headers = {
-        "Authorization": `DeepL-Auth-Key ${settings.deeplToken}`,
+        "Authorization": `DeepL-Auth-Key ${process.env.DEEPL_TOKEN}`,
         "Content-Type": "application/x-www-form-urlencoded"
     };
 

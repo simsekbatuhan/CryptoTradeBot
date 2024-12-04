@@ -1,3 +1,5 @@
+
+
 const { Payments, Status } = require('../models/payment');
 const { sendMessage } = require('../telegramBot/bot');
 const userService = require('./userService');
@@ -7,6 +9,7 @@ const settings = require('../config/settings');
 const axios = require('axios');
 const { References  } = require('../models/reference');
 const log = require('../log')
+
 async function createPayment(amount, currency, subPackage, coinName, userId, ref) {
   try {
     const data = {
@@ -21,7 +24,7 @@ async function createPayment(amount, currency, subPackage, coinName, userId, ref
     const response = await axios.post("https://api.nowpayments.io/v1/payment", data, {
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': settings.paymentNowToken
+        'x-api-key': process.env.PAYMENTNOW_TOKEN
       }
     });
 
@@ -81,7 +84,7 @@ async function paymentControl() {
         }
 
         const response = await axios.get(`https://api.nowpayments.io/v1/payment/${payment.paymentId}`, {
-          headers: { 'x-api-key': settings.paymentNowToken }
+          headers: { 'x-api-key': process.env.PAYMENTNOW_TOKEN }
         });
 
         const paymentInfo = response.data;

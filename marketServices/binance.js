@@ -84,8 +84,8 @@ async function getCoinPrice(apiKey, secretKey, symbol) {
 
 async function getCoins() {
   const binance = Binance({
-    APIKEY: '',
-    APISECRET: '' 
+    APIKEY: process.env.BINANCE_API_KEY,
+    APISECRET: process.env.BINANCE_API_SECRET
   });
 
   try {

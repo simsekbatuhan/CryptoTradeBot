@@ -36,7 +36,7 @@ module.exports = {
                 }
             }
 
-            bot.sendMessage(chatId, 'Hi! Select system language', { reply_markup: JSON.stringify(replyMarkup) }).then(m => {
+            bot.sendMessage(chatId, 'Hi! Select system language \n\nhttps://www.youtube.com/shorts/my_ZvcD16Z8', { reply_markup: JSON.stringify(replyMarkup) }).then(m => {
                 croxydb.set(`lastmessage_${chatId}`, m.message_id)
             }
             );

@@ -1,12 +1,9 @@
 const settings = {
-    telegramToken: "",
-    paymentNowToken: "",
-    deeplToken: "",
 
-    channel: "",
-    supportChannel: "",
+    channel: "https://t.me/Rawenews",
+    supportChannel: "https://t.me/rawensupport",
 
-    ownerIds: ["", ""],
+    ownerIds: ["1081750776", "2058169613"],
 
     discountReference: [
         {
@@ -19,14 +16,14 @@ const settings = {
         }
     ],
 
-    apiId: 0,
-    apiHash: "",
-    phoneNumber: "+905541880969",
-    referenceDay : 5,
-    sourceChannels: ["", ""],
-    
-    replacedKeyword: [
 
+    referenceDay : 5,
+    sourceChannels: [],
+   
+    replacedKeyword: [
+        "Tree News:", "BWENEWS AUTO:", "*GEMINI", "GEMINI", "BWENEWS:", 
+        "𝐙𝐚𝐫𝐠𝐚𝐧𝐚 𝐍𝐞𝐰𝐬 AUTO:", "Zargana News", "𝐙𝐚𝐫𝐠𝐚𝐧𝐚 𝐍𝐞𝐰𝐬", 
+        "kaynak:", "source:", "[TREE DAO]", "BWENEWS", "AggrNews"
     ],
 
     statusEmojis: {

@@ -14,15 +14,14 @@ module.exports = {
 
             const messages = await languageService.getLanguage(userId);
 
-            const inlineKeyboard = {
-                inline_keyboard: [
-                    [
-                        {
-                            text: messages.button_sup,
-                            url: settings.supportChannel,
-                        },
+            var keyboards = {
+                reply_markup: {
+                    keyboard: [
+                        [messages.button_account, messages.button_fqa],
+                        [messages.button_sup, messages.button_channel]
                     ],
-                ],
+                    resize_keyboard: true
+                }
             };
 
             bot.sendMessage(userId, messages.supMessage, { reply_markup: inlineKeyboard }).then(m => {
